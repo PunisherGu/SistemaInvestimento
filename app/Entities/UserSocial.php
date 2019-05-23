@@ -1,14 +1,18 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+
+class UserSocial extends Model
 {
     use Notifiable;
+    use SoftDeletes;
+
+    public $timestamps = true;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'user_id','social_network','social_id','social_email','social_avatar',
     ];
 
     /**
@@ -24,9 +28,10 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
+    
+    /* protected $hidden = [
         'password', 'remember_token',
-    ];
+    ];*/
 
     /**
      * The attributes that should be cast to native types.
