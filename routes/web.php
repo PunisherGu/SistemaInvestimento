@@ -12,7 +12,15 @@
 */
 
 Route::get('/', ['uses'=>'Controller@homepage']);
+
 Route::get('/cadastro', ['uses'=>'Controller@cadastrar']);
+
+/**
+ * Rotas de autenticação
+ * ========================================================================
+ */
+
 Route::get('/login', ['uses'=>'Controller@login']);
+Route::post('/login', ['as'=>'user.login','uses'=>'Controller@logiin']);
 
 

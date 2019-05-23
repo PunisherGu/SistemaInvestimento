@@ -20,9 +20,17 @@ class Controller extends BaseController
     {
         echo 'Tela de cadastro';
     }
+
+    /**
+ * metodos de autenticação
+ * ========================================================================
+ */
     public function login()
     {
-        echo 'Tela de login';
+        return view('user.login');
+
+       
+        
     }
 }
 
