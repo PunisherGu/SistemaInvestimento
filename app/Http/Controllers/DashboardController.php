@@ -19,7 +19,7 @@ class DashboardController extends Controller
     }
 
     public function index(){
-        return "ok";
+        return view('user.dashboard');
     }
 
     public function auth(Request $request){
@@ -30,8 +30,25 @@ class DashboardController extends Controller
         ];
 
         try{
-            \Auth::attempt($data,false);
-            return redirect()->route('user.dashboard');
+
+            if(env('PASSWORD_HASH')){
+                \Auth::attempt($data,false);
+            }
+
+            else{
+                $user = $this->repository->findwhere(['email'=>$request->get('username'),])->first();
+
+                if(!$user)
+                throw new Exception("O Email informado é inválido");
+
+                if($user->password != $request->get('password'))
+                throw new Exception("A senha informada é incorreta");  
+                
+                \Auth::login($user);
+                    
+            }   
+
+            return redirect()->route('user.dashboard');         
         }
 
         catch(\Exception $e){

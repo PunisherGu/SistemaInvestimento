@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'birth'         =>'1994-08-16',
             'gender'        =>'M',
             'email'         =>'gustavoasnogueira@gmail.com',
-            'password'      =>bcrypt('167943'),
+            'password'      => env('PASSWORD_HASH') ? bcrypt('167943'): '167943',
         ]);
     }
 }
