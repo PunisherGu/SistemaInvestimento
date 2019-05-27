@@ -48,7 +48,7 @@ class DashboardController extends Controller
                     
             }   
 
-            return redirect()->route('user.dashboard');         
+            return redirect()->route('user.index');         
         }
 
         catch(\Exception $e){
